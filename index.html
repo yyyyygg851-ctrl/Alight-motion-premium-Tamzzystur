@@ -1,0 +1,3389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#020711">
+<title>TAMZZY STORE</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#020711;
+  --bg2:#061322;
+  --panel:rgba(5,18,35,.94);
+  --line:rgba(78,166,255,.20);
+  --blue:#35a7ff;
+  --cyan:#00e5ff;
+  --purple:#8b5cff;
+  --text:#f4f8ff;
+  --muted:#8da2bd;
+  --green:#36e29b;
+  --red:#ff5577;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(0,153,255,.13),transparent 30%),
+    radial-gradient(circle at 90% 15%,rgba(122,73,255,.13),transparent 28%),
+    linear-gradient(145deg,#01050c,#020914 50%,#041225);
+}
+
+/* BACKGROUND GRID */
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.15;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:35px 35px;
+  animation:gridMove 18s linear infinite;
+}
+
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(
+    transparent 50%,
+    rgba(0,200,255,.025) 50%
+  );
+  background-size:100% 4px;
+  opacity:.25;
+  z-index:999;
+  mix-blend-mode:screen;
+}
+
+@keyframes gridMove{
+  from{background-position:0 0}
+  to{background-position:35px 35px}
+}
+
+button,input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* CURSOR GLOW */
+
+.cursor-glow{
+  position:fixed;
+  width:230px;
+  height:230px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:1;
+  background:radial-gradient(
+    circle,
+    rgba(0,174,255,.10),
+    rgba(85,70,255,.04) 35%,
+    transparent 70%
+  );
+  transform:translate(-50%,-50%);
+  transition:opacity .3s;
+}
+
+/* PARTICLES */
+
+.particles{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.particle{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#72c9ff;
+  box-shadow:0 0 10px #35a7ff;
+  opacity:.45;
+  animation:particleFloat linear infinite;
+}
+
+.particle:nth-child(1){left:4%;top:20%;animation-duration:8s}
+.particle:nth-child(2){left:9%;top:70%;animation-duration:11s}
+.particle:nth-child(3){left:14%;top:40%;animation-duration:9s}
+.particle:nth-child(4){left:18%;top:82%;animation-duration:13s}
+.particle:nth-child(5){left:23%;top:15%;animation-duration:10s}
+.particle:nth-child(6){left:27%;top:57%;animation-duration:12s}
+.particle:nth-child(7){left:32%;top:30%;animation-duration:9s}
+.particle:nth-child(8){left:36%;top:90%;animation-duration:14s}
+.particle:nth-child(9){left:41%;top:12%;animation-duration:8s}
+.particle:nth-child(10){left:45%;top:66%;animation-duration:11s}
+.particle:nth-child(11){left:49%;top:35%;animation-duration:10s}
+.particle:nth-child(12){left:54%;top:78%;animation-duration:12s}
+.particle:nth-child(13){left:58%;top:20%;animation-duration:9s}
+.particle:nth-child(14){left:63%;top:52%;animation-duration:13s}
+.particle:nth-child(15){left:67%;top:10%;animation-duration:10s}
+.particle:nth-child(16){left:71%;top:83%;animation-duration:8s}
+.particle:nth-child(17){left:76%;top:39%;animation-duration:11s}
+.particle:nth-child(18){left:80%;top:68%;animation-duration:14s}
+.particle:nth-child(19){left:84%;top:18%;animation-duration:9s}
+.particle:nth-child(20){left:88%;top:50%;animation-duration:12s}
+.particle:nth-child(21){left:92%;top:76%;animation-duration:10s}
+.particle:nth-child(22){left:96%;top:25%;animation-duration:13s}
+.particle:nth-child(23){left:12%;top:92%;animation-duration:8s}
+.particle:nth-child(24){left:39%;top:48%;animation-duration:12s}
+.particle:nth-child(25){left:60%;top:91%;animation-duration:10s}
+.particle:nth-child(26){left:74%;top:31%;animation-duration:9s}
+.particle:nth-child(27){left:86%;top:89%;animation-duration:14s}
+.particle:nth-child(28){left:51%;top:5%;animation-duration:11s}
+
+@keyframes particleFloat{
+  0%{
+    transform:translateY(30px) scale(.5);
+    opacity:0;
+  }
+  20%{opacity:.5}
+  50%{transform:translateY(-35px) scale(1.2)}
+  80%{opacity:.35}
+  100%{
+    transform:translateY(-100px) scale(.4);
+    opacity:0;
+  }
+}
+
+/* FLOATING */
+
+.floating{
+  position:fixed;
+  pointer-events:none;
+  z-index:1;
+  opacity:.55;
+  animation:float 4s ease-in-out infinite;
+}
+
+.f1{left:7%;top:25%;font-size:18px}
+.f2{right:8%;top:38%;font-size:20px;animation-delay:1s}
+.f3{right:10%;bottom:14%;font-size:22px;animation-delay:2s}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-12px) rotate(5deg)}
+}
+
+/* HEADER */
+
+header{
+  position:relative;
+  z-index:10;
+  max-width:1150px;
+  margin:auto;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  animation:headerDrop .8s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes headerDrop{
+  from{
+    opacity:0;
+    transform:translateY(-25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(0,207,255,.45);
+  border-radius:15px;
+  background:linear-gradient(145deg,rgba(22,75,130,.7),rgba(21,22,69,.7));
+  box-shadow:
+    0 0 20px rgba(0,174,255,.15),
+    inset 0 0 20px rgba(74,130,255,.08);
+  font-weight:900;
+  font-size:20px;
+  animation:logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse{
+  0%,100%{
+    box-shadow:
+      0 0 20px rgba(0,174,255,.15),
+      inset 0 0 20px rgba(74,130,255,.08);
+  }
+  50%{
+    box-shadow:
+      0 0 35px rgba(0,174,255,.32),
+      inset 0 0 25px rgba(74,130,255,.16);
+  }
+}
+
+.brand{
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:.7px;
+}
+
+.online{
+  margin-top:4px;
+  color:var(--green);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.4px;
+}
+
+.online::first-letter{
+  text-shadow:0 0 10px var(--green);
+}
+
+.datetime-box{
+  margin-left:auto;
+  padding:9px 12px;
+  border-radius:13px;
+  border:1px solid rgba(53,167,255,.18);
+  background:rgba(5,20,38,.65);
+  text-align:right;
+  box-shadow:
+    0 0 18px rgba(0,150,255,.07),
+    inset 0 0 15px rgba(0,150,255,.03);
+  transition:.3s;
+}
+
+.datetime-box:hover{
+  border-color:rgba(53,167,255,.45);
+  box-shadow:0 0 25px rgba(0,150,255,.15);
+}
+
+#liveTime{
+  color:#67c9ff;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-shadow:0 0 12px rgba(53,167,255,.35);
+}
+
+#liveDate{
+  margin-top:3px;
+  color:#7891ad;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.3px;
+  white-space:nowrap;
+}
+
+.menu-btn{
+  width:43px;
+  height:43px;
+  flex-shrink:0;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(8,24,44,.7);
+  color:#fff;
+  font-size:23px;
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 18px rgba(0,150,255,.08);
+  transition:.25s;
+}
+
+.menu-btn:hover{
+  border-color:var(--blue);
+  box-shadow:0 0 22px rgba(0,150,255,.25);
+  transform:translateY(-2px) rotate(3deg);
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  margin:35px auto 25px;
+  padding:30px 20px;
+  text-align:center;
+  animation:heroEnter 1s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes heroEnter{
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.hero-badge{
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(53,167,255,.25);
+  background:rgba(9,31,56,.7);
+  color:#8ed5ff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  box-shadow:0 0 25px rgba(0,154,255,.08);
+  animation:badgeGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes badgeGlow{
+  0%,100%{
+    box-shadow:0 0 20px rgba(0,154,255,.06);
+  }
+  50%{
+    box-shadow:0 0 35px rgba(0,154,255,.22);
+  }
+}
+
+.hero h1{
+  margin-top:20px;
+  font-size:clamp(38px,8vw,75px);
+  line-height:.95;
+  font-weight:900;
+  letter-spacing:-3px;
+  background:linear-gradient(90deg,#fff,#50b8ff,#9a7cff,#fff);
+  background-size:250% auto;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:gradientMove 5s linear infinite;
+  filter:drop-shadow(0 0 20px rgba(50,160,255,.08));
+}
+
+@keyframes gradientMove{
+  to{background-position:250% center}
+}
+
+.hero p{
+  max-width:650px;
+  margin:18px auto 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* CONTENT */
+
+.container{
+  position:relative;
+  z-index:2;
+  max-width:1100px;
+  margin:auto;
+  padding:0 16px 70px;
+}
+
+.section-title{
+  margin:15px 0 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.section-title h2{
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.section-title span{
+  font-size:9px;
+  color:#63809f;
+  letter-spacing:1px;
+}
+
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.product-card{
+  position:relative;
+  overflow:hidden;
+  padding:18px;
+  border-radius:23px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(10,30,53,.92),rgba(3,12,25,.96));
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.28),
+    inset 0 1px rgba(255,255,255,.025);
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    border-color .35s,
+    box-shadow .35s;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+.product-card.reveal{
+  opacity:0;
+  transform:translateY(35px);
+}
+
+.product-card.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.product-card:before{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  top:-90px;
+  right:-70px;
+  border-radius:50%;
+  background:rgba(0,182,255,.12);
+  filter:blur(20px);
+  transition:.4s;
+}
+
+.product-card:after{
+  content:"";
+  position:absolute;
+  top:-100%;
+  left:-40%;
+  width:30%;
+  height:300%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.06),
+    transparent
+  );
+  transform:rotate(20deg);
+  transition:.7s;
+  pointer-events:none;
+}
+
+.product-card:hover:after{
+  left:120%;
+}
+
+.product-card:hover:before{
+  width:210px;
+  height:210px;
+  background:rgba(0,182,255,.18);
+}
+
+.product-card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(53,167,255,.48);
+  box-shadow:
+    0 25px 65px rgba(0,0,0,.42),
+    0 0 35px rgba(0,145,255,.13);
+}
+
+.product-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.product-brand{
+  display:flex;
+  gap:11px;
+  align-items:center;
+}
+
+.am-icon{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#315cff,#773bff);
+  font-size:11px;
+  font-weight:900;
+  box-shadow:0 0 25px rgba(96,70,255,.28);
+  flex-shrink:0;
+  transition:.35s;
+}
+
+.product-card:hover .am-icon{
+  transform:translateZ(15px) rotate(-4deg) scale(1.06);
+  box-shadow:0 0 35px rgba(96,70,255,.4);
+}
+
+.bot-icon{
+  background:linear-gradient(145deg,#008cff,#00d8d8);
+}
+
+.panel-icon{
+  background:linear-gradient(145deg,#00a8ff,#655cff);
+}
+
+.canva-icon{
+  background:linear-gradient(145deg,#00c4cc,#7c4dff);
+}
+
+.product-name{
+  font-size:13px;
+  font-weight:900;
+}
+
+.product-sub{
+  margin-top:4px;
+  color:#7891ad;
+  font-size:9px;
+}
+
+.script-credit{
+  margin-top:5px;
+  color:#64c7ff;
+  font-size:8px;
+  font-weight:700;
+}
+
+.available{
+  height:max-content;
+  padding:5px 8px;
+  border-radius:8px;
+  background:rgba(54,226,155,.08);
+  border:1px solid rgba(54,226,155,.18);
+  color:var(--green);
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.6px;
+  animation:statusPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes statusPulse{
+  0%,100%{box-shadow:0 0 0 rgba(54,226,155,0)}
+  50%{box-shadow:0 0 15px rgba(54,226,155,.10)}
+}
+
+.available.soldout{
+  background:rgba(255,85,119,.08);
+  border-color:rgba(255,85,119,.22);
+  color:#ff718c;
+  animation:none;
+}
+
+.price-box{
+  margin-top:18px;
+  padding:13px;
+  border-radius:14px;
+  background:rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.045);
+  transition:.3s;
+}
+
+.product-card:hover .price-box{
+  border-color:rgba(53,167,255,.15);
+  background:rgba(0,80,150,.07);
+}
+
+.price-label{
+  color:#607b99;
+  font-size:8px;
+  font-weight:800;
+}
+
+.price{
+  margin-top:4px;
+  font-size:23px;
+  font-weight:900;
+}
+
+.price.soldout-price{
+  color:#ff718c;
+  font-size:14px;
+  line-height:1.4;
+}
+
+.features{
+  margin-top:15px;
+  display:grid;
+  gap:8px;
+}
+
+.feature{
+  display:flex;
+  gap:7px;
+  color:#a5b7ca;
+  font-size:9px;
+  line-height:1.5;
+  transition:.25s;
+}
+
+.product-card:hover .feature{
+  transform:translateX(2px);
+}
+
+.check{
+  color:var(--green);
+  font-weight:900;
+  flex-shrink:0;
+}
+
+.buy-btn,
+.bot-buy{
+  width:100%;
+  margin-top:18px;
+  padding:13px 12px;
+  border:0;
+  border-radius:13px;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.7px;
+  background:linear-gradient(100deg,#087fff,#624eff);
+  background-size:200% 100%;
+  box-shadow:0 0 22px rgba(45,109,255,.18);
+  position:relative;
+  overflow:hidden;
+  transition:.25s;
+}
+
+.buy-btn:hover,
+.bot-buy:hover{
+  transform:translateY(-2px);
+  background-position:100% 0;
+  box-shadow:0 0 30px rgba(45,109,255,.35);
+}
+
+.buy-btn:active,
+.bot-buy:active{
+  transform:scale(.97);
+}
+
+.buy-btn:disabled{
+  cursor:not-allowed;
+  transform:none;
+  color:#8b98a8;
+  background:linear-gradient(100deg,#222c38,#171e27);
+  box-shadow:none;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+/* RIPPLE */
+
+.ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.35);
+  transform:scale(0);
+  animation:rippleAnim .65s ease-out;
+  pointer-events:none;
+}
+
+@keyframes rippleAnim{
+  to{
+    transform:scale(4);
+    opacity:0;
+  }
+}
+
+.friday-warning{
+  margin-top:14px;
+  padding:11px;
+  border-radius:12px;
+  border:1px solid rgba(255,90,110,.18);
+  background:rgba(255,60,80,.05);
+  color:#ff8b9a;
+  font-size:8px;
+  line-height:1.6;
+  font-weight:800;
+  text-align:center;
+}
+
+/* ORDER */
+
+.order-section{
+  margin-top:25px;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(4,17,31,.75);
+  animation:sectionGlow 4s ease-in-out infinite;
+}
+
+@keyframes sectionGlow{
+  0%,100%{box-shadow:0 0 0 rgba(0,150,255,0)}
+  50%{box-shadow:0 0 35px rgba(0,150,255,.06)}
+}
+
+.order-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:15px;
+}
+
+.order-step{
+  padding:15px;
+  border-radius:15px;
+  border:1px solid rgba(76,151,222,.12);
+  background:rgba(9,27,47,.55);
+  transition:.3s;
+}
+
+.order-step:hover{
+  transform:translateY(-4px);
+  border-color:rgba(53,167,255,.35);
+  box-shadow:0 10px 30px rgba(0,100,255,.08);
+}
+
+.step-number{
+  color:#53bcff;
+  font-size:9px;
+  font-weight:900;
+}
+
+.order-step h3{
+  margin-top:8px;
+  font-size:11px;
+}
+
+.order-step p{
+  margin-top:5px;
+  color:#7188a3;
+  font-size:9px;
+  line-height:1.6;
+}
+
+/* MENU */
+
+.menu-panel{
+  position:fixed;
+  z-index:100;
+  top:75px;
+  right:18px;
+  width:245px;
+  padding:10px;
+  border-radius:18px;
+  border:1px solid rgba(53,167,255,.25);
+  background:rgba(3,13,27,.97);
+  backdrop-filter:blur(20px);
+  box-shadow:0 25px 70px rgba(0,0,0,.5);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-10px) scale(.97);
+  transition:.25s;
+}
+
+.menu-panel.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0) scale(1);
+}
+
+.menu-item{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:12px;
+  background:transparent;
+  color:#dceaff;
+  text-align:left;
+  font-size:10px;
+  font-weight:800;
+  transition:.2s;
+}
+
+.menu-item:hover{
+  background:rgba(40,133,255,.1);
+  color:#6ecaff;
+  transform:translateX(3px);
+}
+
+.menu-item small{
+  display:block;
+  margin-top:4px;
+  color:#607995;
+  font-size:8px;
+  font-weight:500;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+  background:rgba(0,3,10,.78);
+  backdrop-filter:blur(10px);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+}
+
+.modal.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.modal-box{
+  position:relative;
+  width:min(520px,100%);
+  max-height:92vh;
+  overflow:auto;
+  padding:21px;
+  border-radius:25px;
+  border:1px solid rgba(65,159,255,.28);
+  background:linear-gradient(145deg,rgba(7,26,47,.98),rgba(2,10,21,.99));
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.65),
+    0 0 50px rgba(0,125,255,.09);
+  transform:translateY(25px) scale(.94);
+  transition:.35s cubic-bezier(.2,.8,.2,1);
+}
+
+.modal.show .modal-box{
+  transform:translateY(0) scale(1);
+}
+
+.modal-box::-webkit-scrollbar{
+  width:4px;
+}
+
+.modal-box::-webkit-scrollbar-thumb{
+  background:#176fc4;
+  border-radius:20px;
+}
+
+.close{
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:34px;
+  height:34px;
+  border-radius:11px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  font-size:22px;
+  transition:.25s;
+}
+
+.close:hover{
+  background:rgba(255,70,100,.1);
+  border-color:rgba(255,70,100,.3);
+  transform:rotate(90deg);
+}
+
+.modal-title{
+  padding-right:40px;
+}
+
+.modal-title h2{
+  font-size:19px;
+}
+
+.modal-title p{
+  margin-top:7px;
+  color:#728ba7;
+  font-size:10px;
+  line-height:1.6;
+}
+
+.field{
+  margin-top:14px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:7px;
+  color:#7291ae;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.field input{
+  width:100%;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid rgba(73,151,226,.16);
+  outline:none;
+  background:rgba(0,0,0,.23);
+  color:#fff;
+  font-size:11px;
+  transition:.25s;
+}
+
+.field input:focus{
+  border-color:rgba(53,167,255,.6);
+  box-shadow:0 0 20px rgba(0,150,255,.09);
+}
+
+.bot-info{
+  margin-top:17px;
+  padding:17px;
+  border-radius:17px;
+  border:1px solid rgba(52,168,255,.15);
+  background:rgba(0,109,190,.055);
+}
+
+.bot-info h3{
+  font-size:11px;
+}
+
+.bot-info p{
+  margin-top:8px;
+  color:#7791ac;
+  font-size:9px;
+  line-height:1.7;
+}
+
+.bot-credit{
+  display:inline-block;
+  margin-top:9px;
+  color:#56c3ff;
+  font-size:9px;
+  font-weight:800;
+}
+
+.bot-price{
+  margin-top:13px;
+  font-size:22px;
+  font-weight:900;
+}
+
+/* QRIS */
+
+.qris-box{
+  margin-top:18px;
+  padding:15px;
+  border-radius:18px;
+  border:1px solid rgba(53,167,255,.18);
+  background:rgba(0,0,0,.18);
+  text-align:center;
+}
+
+.qris-box img{
+  width:min(270px,100%);
+  max-height:290px;
+  object-fit:contain;
+  border-radius:12px;
+  display:block;
+  margin:auto;
+  transition:.3s;
+}
+
+.qris-box img:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 30px rgba(0,150,255,.12);
+}
+
+.qris-label{
+  margin-bottom:12px;
+  color:#71caff;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+/* PRICE */
+
+.checkout-price{
+  margin-top:16px;
+  padding:14px;
+  border-radius:15px;
+  background:rgba(0,0,0,.2);
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.price-line{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:6px;
+  font-size:10px;
+  color:#8ba0b8;
+}
+
+.price-line:first-child{
+  margin-top:0;
+}
+
+.price-final{
+  color:#52e5a3;
+  font-size:17px;
+  font-weight:900;
+}
+
+.tax-line{
+  color:#b28cff;
+}
+
+.discount-line{
+  color:#42e7a3;
+}
+
+/* TUTORIAL */
+
+.tutorial{
+  margin-top:15px;
+  padding:14px;
+  border-radius:17px;
+  background:rgba(0,0,0,.16);
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.tutorial-title{
+  margin-bottom:10px;
+  color:#6e8ba8;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.tutorial img{
+  width:100%;
+  max-height:300px;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+/* VOUCHER */
+
+.voucher-info{
+  margin-top:17px;
+  padding:16px;
+  border-radius:17px;
+  border:1px solid rgba(133,88,255,.18);
+  background:rgba(83,48,180,.055);
+}
+
+.voucher-info strong{
+  font-size:10px;
+}
+
+.voucher-info p{
+  margin-top:8px;
+  color:#788da7;
+  font-size:9px;
+  line-height:1.7;
+}
+
+.social-links{
+  display:grid;
+  gap:8px;
+  margin-top:14px;
+}
+
+.social-link{
+  display:block;
+  padding:12px;
+  border-radius:11px;
+  background:rgba(35,100,180,.08);
+  border:1px solid rgba(50,150,255,.14);
+  color:#78caff;
+  text-align:center;
+  font-size:8px;
+  font-weight:900;
+  transition:.25s;
+}
+
+.social-link:hover{
+  transform:translateY(-2px);
+  background:rgba(35,100,180,.16);
+  box-shadow:0 0 20px rgba(0,150,255,.1);
+}
+
+.voucher-row{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+}
+
+.voucher-row input{
+  flex:1;
+  min-width:0;
+  padding:12px;
+  border-radius:11px;
+  border:1px solid rgba(72,153,231,.15);
+  background:rgba(0,0,0,.22);
+  color:#fff;
+  outline:none;
+  font-size:9px;
+}
+
+.voucher-row button{
+  padding:0 15px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(100deg,#087fff,#654bff);
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+  transition:.25s;
+}
+
+.voucher-row button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 20px rgba(65,100,255,.25);
+}
+
+.voucher-status{
+  margin-top:9px;
+  font-size:9px;
+  font-weight:700;
+}
+
+.note{
+  margin-top:13px;
+  color:#607892;
+  font-size:8px;
+  line-height:1.7;
+  text-align:center;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  z-index:500;
+  left:50%;
+  bottom:24px;
+  transform:translate(-50%,20px) scale(.95);
+  min-width:230px;
+  max-width:90%;
+  padding:13px 17px;
+  border-radius:13px;
+  border:1px solid rgba(75,166,255,.2);
+  background:rgba(3,16,30,.96);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.4),
+    0 0 25px rgba(0,130,255,.08);
+  color:#dcecff;
+  text-align:center;
+  font-size:9px;
+  font-weight:700;
+  opacity:0;
+  visibility:hidden;
+  transition:.3s cubic-bezier(.2,.8,.2,1);
+}
+
+.toast.show{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,0) scale(1);
+}
+
+/* FOOTER */
+
+footer{
+  position:relative;
+  z-index:2;
+  padding:25px 15px 40px;
+  text-align:center;
+  color:#4e6680;
+  font-size:8px;
+  letter-spacing:.7px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .order-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    margin-top:25px;
+    padding:25px 15px;
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+  .product-card{
+    padding:17px;
+  }
+
+  .modal-box{
+    padding:18px;
+  }
+
+  .datetime-box{
+    padding:7px 9px;
+  }
+
+  #liveTime{
+    font-size:11px;
+  }
+
+  #liveDate{
+    font-size:7px;
+  }
+
+  .cursor-glow{
+    display:none;
+  }
+}
+
+@media(max-width:430px){
+  header{
+    padding:14px 10px;
+  }
+
+  .logo{
+    width:39px;
+    height:39px;
+    border-radius:12px;
+    font-size:17px;
+  }
+
+  .brand{
+    font-size:12px;
+  }
+
+  .online{
+    font-size:7px;
+  }
+
+  .datetime-box{
+    padding:6px 7px;
+  }
+
+  #liveTime{
+    font-size:10px;
+    letter-spacing:.5px;
+  }
+
+  #liveDate{
+    font-size:6px;
+  }
+
+  .menu-btn{
+    width:38px;
+    height:38px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *:before,
+  *:after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="particles">
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+  <i class="particle"></i><i class="particle"></i>
+</div>
+
+<div class="floating f1">✦</div>
+<div class="floating f2">✨</div>
+<div class="floating f3">🚀</div>
+
+<header>
+
+  <div class="logo-area">
+    <div class="logo">T</div>
+
+    <div>
+      <div class="brand">TAMZZY STORE</div>
+      <div class="online">● SYSTEM ONLINE</div>
+    </div>
+  </div>
+
+  <div class="datetime-box">
+    <div id="liveTime">00:00:00</div>
+    <div id="liveDate">Senin, 1 Januari 2026</div>
+  </div>
+
+  <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+
+</header>
+
+<div class="menu-panel" id="menuPanel">
+
+  <button class="menu-item" onclick="openVoucher();closeMenu()">
+    VOUCHER DISKON 5%
+    <small>Dapatkan potongan harga produk tertentu</small>
+  </button>
+
+  <button class="menu-item" onclick="openPanelInfo();closeMenu()">
+    PANEL AKTIVASI BOT TELEGRAM
+    <small>Panel aktivasi bot Telegram Rp5.000</small>
+  </button>
+
+</div>
+
+<section class="hero">
+
+  <div class="hero-badge">
+    PREMIUM DIGITAL STORE
+  </div>
+
+  <h1>TAMZZY STORE</h1>
+
+  <p>
+    Tempat pembelian produk digital,
+    premium, script bot Telegram dan
+    akses premium dengan proses order
+    melalui WhatsApp admin.
+  </p>
+
+</section>
+
+<main class="container">
+
+  <div class="section-title">
+    <h2>PRODUK TERSEDIA</h2>
+    <span>FAST PROCESS</span>
+  </div>
+
+  <div class="products">
+
+    <!-- ALIGHT MOTION -->
+
+    <div class="product-card reveal">
+
+      <div class="product-top">
+        <div class="product-brand">
+
+          <div class="am-icon">AM</div>
+
+          <div>
+            <div class="product-name">
+              Alight Motion Premium
+            </div>
+
+            <div class="product-sub">
+              Premium Digital
+            </div>
+          </div>
+
+        </div>
+
+        <div class="available">
+          TERSEDIA
+        </div>
+      </div>
+
+      <div class="price-box">
+        <div class="price-label">HARGA</div>
+        <div class="price">Rp5.000</div>
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Premium Alight Motion
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Proses cepat
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Bantuan setelah pembelian
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Pembayaran QRIS
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Pajak 5%
+        </div>
+
+      </div>
+
+      <button class="buy-btn" onclick="openAMCheckout()">
+        BELI ALIGHT MOTION
+      </button>
+
+    </div>
+
+    <!-- GRATIS JUMAT -->
+
+    <div class="product-card reveal">
+
+      <div class="product-top">
+
+        <div class="product-brand">
+
+          <div class="am-icon">AM</div>
+
+          <div>
+            <div class="product-name">
+              Alight Motion Premium
+            </div>
+
+            <div class="product-sub">
+              Khusus Hari Jum'at
+            </div>
+          </div>
+
+        </div>
+
+        <div class="available">
+          GRATIS
+        </div>
+
+      </div>
+
+      <div class="price-box">
+
+        <div class="price-label">
+          PROMO JUM'AT
+        </div>
+
+        <div class="price">
+          Rp0
+        </div>
+
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Alight Motion Premium
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Khusus Hari Jum'at
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Gratis
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Pajak 5% dari Rp0 = Rp0
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Proses melalui WhatsApp
+        </div>
+
+      </div>
+
+      <div class="friday-warning">
+        ALIGHT MOTION INI HANYA BERLAKU DI HARI JUM'AT.
+        JIKA ADA YANG MEMINTA DI HARI SABTU–KAMIS,
+        AKAN KAMI BLOKIR.
+      </div>
+
+      <button class="buy-btn" onclick="openFridayAM()">
+        AMBIL GRATIS
+      </button>
+
+    </div>
+
+    <!-- PANEL -->
+
+    <div class="product-card reveal">
+
+      <div class="product-top">
+
+        <div class="product-brand">
+
+          <div class="am-icon panel-icon">BOT</div>
+
+          <div>
+            <div class="product-name">
+              Panel Aktivasi Bot Telegram
+            </div>
+
+            <div class="product-sub">
+              Telegram Bot Panel
+            </div>
+          </div>
+
+        </div>
+
+        <div class="available">
+          TERSEDIA
+        </div>
+
+      </div>
+
+      <div class="price-box">
+
+        <div class="price-label">HARGA</div>
+
+        <div class="price">
+          Rp5.000
+        </div>
+
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Panel aktivasi bot Telegram
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Proses aktivasi melalui admin
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Proses cepat
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Pajak 5%
+        </div>
+
+      </div>
+
+      <button class="buy-btn" onclick="openPanelOrder()">
+        BELI PANEL BOT TELEGRAM
+      </button>
+
+    </div>
+
+    <!-- SCRIPT BOT -->
+
+    <div class="product-card reveal">
+
+      <div class="product-top">
+
+        <div class="product-brand">
+
+          <div class="am-icon bot-icon">BOT</div>
+
+          <div>
+
+            <div class="product-name">
+              Script Bot Tele
+            </div>
+
+            <div class="product-sub">
+              Telegram Bot Script
+            </div>
+
+            <div class="script-credit">
+              Script by dapjimotion
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="available">
+          TERSEDIA
+        </div>
+
+      </div>
+
+      <div class="price-box">
+
+        <div class="price-label">HARGA</div>
+
+        <div class="price">
+          Rp10.000
+        </div>
+
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Script Bot Telegram
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Siap digunakan
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Proses cepat
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Pajak 5%
+        </div>
+
+      </div>
+
+      <button class="buy-btn" onclick="openBotCheckout()">
+        BELI SCRIPT BOT TELE
+      </button>
+
+    </div>
+
+    <!-- AKSES PREMIUM BOT -->
+
+    <div class="product-card reveal">
+
+      <div class="product-top">
+
+        <div class="product-brand">
+
+          <div class="am-icon panel-icon">AM</div>
+
+          <div>
+
+            <div class="product-name">
+              Akses Premium Bot Tele
+            </div>
+
+            <div class="product-sub">
+              Alight Motion Premium
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="available">
+          TERSEDIA
+        </div>
+
+      </div>
+
+      <div class="price-box">
+
+        <div class="price-label">HARGA</div>
+
+        <div class="price">
+          Rp3.000
+        </div>
+
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Akses Premium Bot Tele
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Alight Motion Premium
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Permanen
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Pajak 5%
+        </div>
+
+      </div>
+
+      <button class="buy-btn" onclick="openAMBotAccess()">
+        BELI AKSES PREMIUM BOT
+      </button>
+
+    </div>
+
+    <!-- CANVA SUDAH TIDAK PRODUKSI -->
+
+    <div class="product-card reveal">
+
+      <div class="product-top">
+
+        <div class="product-brand">
+
+          <div class="am-icon canva-icon">
+            C
+          </div>
+
+          <div>
+
+            <div class="product-name">
+              Canva Premium 1 Bulan
+            </div>
+
+            <div class="product-sub">
+              Sudah Tidak Produksi
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="available soldout">
+          HABIS
+        </div>
+
+      </div>
+
+      <div class="price-box">
+
+        <div class="price-label">
+          STATUS PRODUK
+        </div>
+
+        <div class="price soldout-price">
+          SUDAH TIDAK PRODUKSI
+        </div>
+
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <span style="color:#ff718c;font-weight:900;">×</span>
+          Canva Premium
+        </div>
+
+        <div class="feature">
+          <span style="color:#ff718c;font-weight:900;">×</span>
+          Stok sudah habis
+        </div>
+
+        <div class="feature">
+          <span style="color:#ff718c;font-weight:900;">×</span>
+          Produk tidak diproduksi lagi
+        </div>
+
+        <div class="feature">
+          <span style="color:#ff718c;font-weight:900;">×</span>
+          Tidak menerima order
+        </div>
+
+      </div>
+
+      <button class="buy-btn" disabled>
+        SUDAH TIDAK TERSEDIA
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- CARA ORDER -->
+
+  <section class="order-section">
+
+    <div class="section-title">
+      <h2>CARA ORDER</h2>
+      <span>3 STEP</span>
+    </div>
+
+    <div class="order-grid">
+
+      <div class="order-step">
+        <div class="step-number">01</div>
+
+        <h3>PILIH PRODUK</h3>
+
+        <p>
+          Pilih produk yang ingin kamu beli
+          lalu tekan tombol pembelian.
+        </p>
+      </div>
+
+      <div class="order-step">
+        <div class="step-number">02</div>
+
+        <h3>ISI DATA</h3>
+
+        <p>
+          Masukkan nama dan nomor WhatsApp
+          sesuai data pembeli.
+        </p>
+      </div>
+
+      <div class="order-step">
+        <div class="step-number">03</div>
+
+        <h3>KONFIRMASI</h3>
+
+        <p>
+          Hubungi admin melalui WhatsApp
+          untuk proses pembayaran dan
+          pengiriman.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 TAMZZY STORE — DIGITAL PREMIUM
+</footer>
+
+
+<!-- ALIGHT MOTION CHECKOUT -->
+
+<div class="modal" id="amModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeAMCheckout()">×</button>
+
+    <div class="modal-title">
+      <h2>Alight Motion Premium</h2>
+
+      <p>
+        Lengkapi data pembelian kemudian
+        lakukan pembayaran sesuai instruksi.
+      </p>
+    </div>
+
+    <div class="field">
+      <label>NAMA</label>
+      <input id="amName" type="text" placeholder="Masukkan nama">
+    </div>
+
+    <div class="field">
+      <label>NOMOR WHATSAPP</label>
+      <input id="amPhone" type="tel" placeholder="Contoh: 085xxxxxxxxx">
+    </div>
+
+    <div class="field">
+      <label>EMAIL</label>
+      <input id="amEmail" type="email" placeholder="Masukkan email">
+    </div>
+
+    <div class="checkout-price">
+
+      <div class="price-line">
+        <span>Harga normal</span>
+        <span>Rp5.000</span>
+      </div>
+
+      <div class="price-line discount-line" id="amDiscountRow" style="display:none">
+        <span>Diskon voucher 5%</span>
+        <span id="amDiscount">-Rp250</span>
+      </div>
+
+      <div class="price-line tax-line">
+        <span>Pajak 5%</span>
+        <span id="amTax">Rp250</span>
+      </div>
+
+      <div class="price-line">
+        <span>Total pembayaran</span>
+        <span class="price-final" id="amTotal">Rp5.250</span>
+      </div>
+
+    </div>
+
+    <div class="qris-box">
+
+      <div class="qris-label">
+        SCAN QRIS UNTUK PEMBAYARAN
+      </div>
+
+      <img src="qris.png" alt="QRIS TAMZZY STORE">
+
+    </div>
+
+    <div class="tutorial">
+
+      <div class="tutorial-title">
+        TUTORIAL PEMBAYARAN
+      </div>
+
+      <img src="tutorial.png" alt="Tutorial pembayaran">
+
+    </div>
+
+    <div class="field">
+
+      <label>BUKTI PEMBAYARAN</label>
+
+      <input
+        id="amProof"
+        type="file"
+        accept="image/*"
+        onchange="previewProof(event)"
+      >
+
+    </div>
+
+    <div id="proofPreview"
+      style="
+        margin-top:10px;
+        color:#6e8ba8;
+        font-size:8px;
+        text-align:center;
+      ">
+    </div>
+
+    <button class="bot-buy" onclick="sendAMOrder()">
+      SUDAH BAYAR — KIRIM ORDER
+    </button>
+
+    <div class="note">
+      Setelah WhatsApp terbuka, kirimkan
+      bukti pembayaran kepada admin jika diperlukan.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- JUMAT GRATIS -->
+
+<div class="modal" id="fridayAMModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeFridayAM()">×</button>
+
+    <div class="modal-title">
+
+      <h2>Alight Motion Premium</h2>
+
+      <p>
+        Promo khusus hari Jum'at.
+        Dapatkan akses gratis melalui admin.
+      </p>
+
+    </div>
+
+    <div class="bot-info">
+
+      <h3>PROMO JUM'AT</h3>
+
+      <p>
+        Alight Motion Premium gratis khusus
+        promo hari Jum'at.
+      </p>
+
+      <div class="bot-price">
+        Rp0 — GRATIS
+      </div>
+
+    </div>
+
+    <div class="friday-warning">
+      ALIGHT MOTION INI HANYA BERLAKU DI HARI JUM'AT.
+      JIKA ADA YANG MEMINTA DI HARI SABTU–KAMIS,
+      AKAN KAMI BLOKIR.
+    </div>
+
+    <div class="field">
+      <label>NAMA</label>
+      <input id="fridayAMName" type="text" placeholder="Masukkan nama">
+    </div>
+
+    <div class="field">
+      <label>NOMOR WHATSAPP</label>
+      <input id="fridayAMPhone" type="tel" placeholder="Contoh: 085xxxxxxxxx">
+    </div>
+
+    <button class="bot-buy" onclick="sendFridayAM()">
+      AMBIL GRATIS
+    </button>
+
+    <div class="note">
+      Pajak 5% dari Rp0 tetap Rp0.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PANEL -->
+
+<div class="modal" id="panelModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closePanelOrder()">×</button>
+
+    <div class="modal-title">
+
+      <h2>Panel Aktivasi Bot Telegram</h2>
+
+      <p>
+        Order panel aktivasi bot Telegram
+        melalui WhatsApp admin TAMZZY STORE.
+      </p>
+
+    </div>
+
+    <div class="bot-info">
+
+      <h3>PANEL AKTIVASI BOT TELEGRAM</h3>
+
+      <p>
+        Panel untuk proses aktivasi bot
+        Telegram melalui admin.
+      </p>
+
+      <div class="bot-price">
+        Rp5.000
+      </div>
+
+    </div>
+
+    <div class="checkout-price">
+
+      <div class="price-line">
+        <span>Harga produk</span>
+        <span>Rp5.000</span>
+      </div>
+
+      <div class="price-line tax-line">
+        <span>Pajak 5%</span>
+        <span>Rp250</span>
+      </div>
+
+      <div class="price-line">
+        <span>Total</span>
+        <span class="price-final">Rp5.250</span>
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label>NAMA</label>
+      <input id="panelName" type="text" placeholder="Masukkan nama">
+    </div>
+
+    <div class="field">
+      <label>NOMOR WHATSAPP</label>
+      <input id="panelPhone" type="tel" placeholder="Contoh: 085xxxxxxxxx">
+    </div>
+
+    <button class="bot-buy" onclick="sendPanelOrder()">
+      ORDER PANEL BOT TELEGRAM
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- SCRIPT BOT -->
+
+<div class="modal" id="botModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeBotCheckout()">×</button>
+
+    <div class="modal-title">
+
+      <h2>Script Bot Tele</h2>
+
+      <p>
+        Order script bot Telegram melalui
+        WhatsApp admin.
+      </p>
+
+    </div>
+
+    <div class="bot-info">
+
+      <h3>SCRIPT BOT TELEGRAM</h3>
+
+      <div class="bot-credit">
+        Script by dapjimotion
+      </div>
+
+      <p>
+        Script bot Telegram dengan proses
+        order melalui admin TAMZZY STORE.
+      </p>
+
+      <div class="bot-price">
+        Rp10.000
+      </div>
+
+    </div>
+
+    <div class="checkout-price">
+
+      <div class="price-line">
+        <span>Harga produk</span>
+        <span>Rp10.000</span>
+      </div>
+
+      <div class="price-line tax-line">
+        <span>Pajak 5%</span>
+        <span>Rp500</span>
+      </div>
+
+      <div class="price-line">
+        <span>Total</span>
+        <span class="price-final">Rp10.500</span>
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label>NAMA</label>
+      <input id="botName" type="text" placeholder="Masukkan nama">
+    </div>
+
+    <div class="field">
+      <label>NOMOR WHATSAPP</label>
+      <input id="botPhone" type="tel" placeholder="Contoh: 085xxxxxxxxx">
+    </div>
+
+    <button class="bot-buy" onclick="sendBotOrder()">
+      ORDER SCRIPT BOT TELE
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- AKSES PREMIUM BOT -->
+
+<div class="modal" id="amBotModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeAMBotAccess()">×</button>
+
+    <div class="modal-title">
+
+      <h2>Akses Premium Bot Tele</h2>
+
+      <p>
+        Akses Premium Alight Motion melalui
+        bot Telegram.
+      </p>
+
+    </div>
+
+    <div class="bot-info">
+
+      <h3>ALIGHT MOTION PREMIUM</h3>
+
+      <p>
+        Akses premium melalui bot Telegram
+        dengan masa akses permanen dan
+        penggunaan unlimited.
+      </p>
+
+      <div class="bot-price">
+        Rp3.000
+      </div>
+
+    </div>
+
+    <div class="checkout-price">
+
+      <div class="price-line">
+        <span>Harga produk</span>
+        <span>Rp3.000</span>
+      </div>
+
+      <div class="price-line tax-line">
+        <span>Pajak 5%</span>
+        <span>Rp150</span>
+      </div>
+
+      <div class="price-line">
+        <span>Total</span>
+        <span class="price-final">Rp3.150</span>
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label>NAMA</label>
+      <input id="amBotName" type="text" placeholder="Masukkan nama">
+    </div>
+
+    <div class="field">
+      <label>NOMOR WHATSAPP</label>
+      <input id="amBotPhone" type="tel" placeholder="Contoh: 085xxxxxxxxx">
+    </div>
+
+    <button class="bot-buy" onclick="sendAMBotOrder()">
+      ORDER AKSES PREMIUM
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- PANEL INFO -->
+
+<div class="modal" id="panelInfoModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closePanelInfo()">×</button>
+
+    <div class="modal-title">
+
+      <h2>Panel Aktivasi Bot Telegram</h2>
+
+      <p>
+        Panel aktivasi bot Telegram
+        Rp5.000.
+      </p>
+
+    </div>
+
+    <div class="bot-info">
+
+      <h3>PANEL BOT TELEGRAM</h3>
+
+      <p>
+        Gunakan panel untuk melakukan
+        proses aktivasi bot Telegram
+        melalui admin TAMZZY STORE.
+      </p>
+
+      <div class="bot-price">
+        Rp5.000
+      </div>
+
+    </div>
+
+    <div class="checkout-price">
+
+      <div class="price-line">
+        <span>Harga produk</span>
+        <span>Rp5.000</span>
+      </div>
+
+      <div class="price-line tax-line">
+        <span>Pajak 5%</span>
+        <span>Rp250</span>
+      </div>
+
+      <div class="price-line">
+        <span>Total</span>
+        <span class="price-final">Rp5.250</span>
+      </div>
+
+    </div>
+
+    <button
+      class="bot-buy"
+      onclick="
+        closePanelInfo();
+        openPanelOrder();
+      "
+    >
+      BELI PANEL SEKARANG
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- VOUCHER -->
+
+<div class="modal" id="voucherModal">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeVoucher()">×</button>
+
+    <div class="modal-title">
+
+      <h2>Voucher Diskon 5%</h2>
+
+      <p>
+        Ikuti TikTok dan saluran WhatsApp
+        TAMZZY untuk mendapatkan kode voucher.
+      </p>
+
+    </div>
+
+    <div class="voucher-info">
+
+      <strong>SYARAT VOUCHER</strong>
+
+      <p>
+        Follow TikTok TAMZZY dan ikuti saluran
+        WhatsApp TAMZZY. Kode voucher dibagikan
+        melalui saluran WhatsApp.
+      </p>
+
+      <div class="social-links">
+
+        <a
+          class="social-link"
+          href="https://www.tiktok.com/@tamztoktev70?_r=1&_t=ZS-9ADA38Bw6cR"
+          target="_blank"
+          rel="noopener"
+        >
+          FOLLOW TIKTOK @TAMZTOKTEV70
+        </a>
+
+        <a
+          class="social-link"
+          href="https://whatsapp.com/channel/0029VbDqU7ILdQeWB5k2342w"
+          target="_blank"
+          rel="noopener"
+        >
+          IKUTI SALURAN WHATSAPP
+        </a>
+
+      </div>
+
+      <div class="voucher-row">
+
+        <input
+          id="voucherInput"
+          type="text"
+          maxlength="20"
+          placeholder="MASUKKAN KODE VOUCHER"
+          autocomplete="off"
+        >
+
+        <button onclick="applyVoucher()">
+          PAKAI
+        </button>
+
+      </div>
+
+      <div class="voucher-status" id="voucherStatus"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+const ADMIN_WA = "6285122688033";
+
+let voucherApplied = false;
+let toastTimer;
+
+
+/* FORMAT RUPIAH */
+
+function rupiah(number){
+  return "Rp" +
+    Math.round(number).toLocaleString("id-ID");
+}
+
+
+/* JAM / HARI / BULAN */
+
+function updateDateTime(){
+
+  const now = new Date();
+
+  const days = [
+    "Minggu",
+    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jum'at",
+    "Sabtu"
+  ];
+
+  const months = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+  ];
+
+  const hours =
+    String(now.getHours()).padStart(2,"0");
+
+  const minutes =
+    String(now.getMinutes()).padStart(2,"0");
+
+  const seconds =
+    String(now.getSeconds()).padStart(2,"0");
+
+  document.getElementById("liveTime").textContent =
+    `${hours}:${minutes}:${seconds}`;
+
+  document.getElementById("liveDate").textContent =
+    `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+}
+
+updateDateTime();
+setInterval(updateDateTime,1000);
+
+
+/* MENU */
+
+function toggleMenu(){
+  document.getElementById("menuPanel").classList.toggle("show");
+}
+
+function closeMenu(){
+  document.getElementById("menuPanel").classList.remove("show");
+}
+
+document.addEventListener("click",function(e){
+
+  if(
+    !e.target.closest(".menu-btn") &&
+    !e.target.closest(".menu-panel")
+  ){
+    closeMenu();
+  }
+
+});
+
+
+/* TOAST */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  clearTimeout(toastTimer);
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  toastTimer = setTimeout(function(){
+    toast.classList.remove("show");
+  },3000);
+}
+
+
+/* ALIGHT MOTION */
+
+function openAMCheckout(){
+
+  updateAMPrice();
+
+  document
+    .getElementById("amModal")
+    .classList.add("show");
+}
+
+function closeAMCheckout(){
+
+  document
+    .getElementById("amModal")
+    .classList.remove("show");
+}
+
+
+/* HITUNG ALIGHT MOTION + VOUCHER + PAJAK */
+
+function updateAMPrice(){
+
+  const normalPrice = 5000;
+
+  const discount =
+    voucherApplied
+      ? Math.round(normalPrice * 0.05)
+      : 0;
+
+  const afterDiscount =
+    normalPrice - discount;
+
+  const tax =
+    Math.round(afterDiscount * 0.05);
+
+  const total =
+    afterDiscount + tax;
+
+  document.getElementById("amDiscount").textContent =
+    "-" + rupiah(discount);
+
+  document.getElementById("amTax").textContent =
+    rupiah(tax);
+
+  document.getElementById("amTotal").textContent =
+    rupiah(total);
+
+  document.getElementById("amDiscountRow").style.display =
+    voucherApplied ? "flex" : "none";
+}
+
+
+/* JUMAT GRATIS */
+
+function openFridayAM(){
+  document.getElementById("fridayAMModal").classList.add("show");
+}
+
+function closeFridayAM(){
+  document.getElementById("fridayAMModal").classList.remove("show");
+}
+
+function sendFridayAM(){
+
+  const name =
+    document.getElementById("fridayAMName").value.trim();
+
+  const phone =
+    document.getElementById("fridayAMPhone").value.trim();
+
+  if(!name){
+    showToast("Nama belum diisi.");
+    return;
+  }
+
+  if(!phone){
+    showToast("Nomor WhatsApp belum diisi.");
+    return;
+  }
+
+  const message =
+`HALO TAMZZY STORE
+
+SAYA MAU AMBIL PROMO GRATIS
+
+DATA PEMBELI
+Nama: ${name}
+WhatsApp: ${phone}
+
+PRODUK
+Alight Motion Premium
+
+PROMO
+KHUSUS HARI JUM'AT
+
+HARGA
+GRATIS / Rp0
+
+PAJAK
+5% dari Rp0 = Rp0
+
+TOTAL
+Rp0
+
+Saya ingin mengambil promo
+Alight Motion Premium gratis.
+
+Mohon informasi proses mendapatkan
+akses premium.
+
+Terima kasih.`;
+
+  openWhatsApp(message);
+}
+
+
+/* PREVIEW BUKTI */
+
+function previewProof(event){
+
+  const file =
+    event.target.files[0];
+
+  const preview =
+    document.getElementById("proofPreview");
+
+  if(!file){
+
+    preview.textContent =
+      "Belum ada bukti pembayaran.";
+
+    return;
+  }
+
+  preview.textContent =
+    "Bukti pembayaran dipilih: " +
+    file.name;
+}
+
+
+/* VOUCHER */
+
+function openVoucher(){
+  document.getElementById("voucherModal").classList.add("show");
+}
+
+function closeVoucher(){
+  document.getElementById("voucherModal").classList.remove("show");
+}
+
+function applyVoucher(){
+
+  const input =
+    document.getElementById("voucherInput")
+      .value
+      .trim()
+      .toUpperCase();
+
+  const status =
+    document.getElementById("voucherStatus");
+
+  if(!input){
+
+    status.style.color = "#ff7186";
+    status.textContent =
+      "Masukkan kode voucher terlebih dahulu.";
+
+    return;
+  }
+
+  if(input === "TAMZZY5"){
+
+    voucherApplied = true;
+
+    updateAMPrice();
+
+    status.style.color = "#42e7a3";
+
+    status.textContent =
+      "Voucher berhasil digunakan — diskon 5%.";
+
+    showToast("Voucher aktif — harga diperbarui.");
+
+    setTimeout(function(){
+      closeVoucher();
+    },900);
+
+  }else{
+
+    status.style.color = "#ff7186";
+
+    status.textContent =
+      "Kode voucher tidak valid.";
+  }
+}
+
+
+/* ORDER WHATSAPP */
+
+function openWhatsApp(message){
+
+  const wa =
+    "https://wa.me/" +
+    ADMIN_WA +
+    "?text=" +
+    encodeURIComponent(message);
+
+  showToast("Membuka WhatsApp admin...");
+
+  setTimeout(function(){
+
+    window.open(
+      wa,
+      "_blank"
+    );
+
+  },600);
+}
+
+
+/* ORDER ALIGHT MOTION */
+
+function sendAMOrder(){
+
+  const name =
+    document.getElementById("amName").value.trim();
+
+  const phone =
+    document.getElementById("amPhone").value.trim();
+
+  const email =
+    document.getElementById("amEmail").value.trim();
+
+  const proof =
+    document.getElementById("amProof").files[0];
+
+  if(!name){
+    showToast("Nama belum diisi.");
+    return;
+  }
+
+  if(!phone){
+    showToast("Nomor WhatsApp belum diisi.");
+    return;
+  }
+
+  if(!email){
+    showToast("Email belum diisi.");
+    return;
+  }
+
+  if(!proof){
+    showToast("Bukti pembayaran belum dipilih.");
+    return;
+  }
+
+  const normalPrice = 5000;
+
+  const discount =
+    voucherApplied
+      ? Math.round(normalPrice * 0.05)
+      : 0;
+
+  const afterDiscount =
+    normalPrice - discount;
+
+  const tax =
+    Math.round(afterDiscount * 0.05);
+
+  const total =
+    afterDiscount + tax;
+
+  const voucherStatus =
+    voucherApplied
+      ? "DISKON 5% AKTIF"
+      : "TIDAK MENGGUNAKAN VOUCHER";
+
+  const message =
+`HALO TAMZZY STORE
+
+SAYA MAU ORDER ALIGHT MOTION PREMIUM
+
+DATA PEMBELI
+Nama: ${name}
+WhatsApp: ${phone}
+Email: ${email}
+
+PRODUK
+Alight Motion Premium
+
+HARGA NORMAL
+Rp5.000
+
+${voucherStatus}
+
+DISKON
+${rupiah(discount)}
+
+HARGA SETELAH DISKON
+${rupiah(afterDiscount)}
+
+PAJAK
+5% = ${rupiah(tax)}
+
+TOTAL PEMBAYARAN
+${rupiah(total)}
+
+BUKTI PEMBAYARAN
+Saya sudah menyiapkan bukti pembayaran.
+
+Mohon diproses pesanan saya.
+
+Terima kasih.`;
+
+  openWhatsApp(message);
+}
+
+
+/* PANEL */
+
+function openPanelOrder(){
+  document.getElementById("panelModal").classList.add("show");
+}
+
+function closePanelOrder(){
+  document.getElementById("panelModal").classList.remove("show");
+}
+
+function sendPanelOrder(){
+
+  const name =
+    document.getElementById("panelName").value.trim();
+
+  const phone =
+    document.getElementById("panelPhone").value.trim();
+
+  if(!name){
+    showToast("Nama belum diisi.");
+    return;
+  }
+
+  if(!phone){
+    showToast("Nomor WhatsApp belum diisi.");
+    return;
+  }
+
+  const message =
+`HALO TAMZZY STORE
+
+SAYA MAU ORDER PANEL AKTIVASI BOT TELEGRAM
+
+DATA PEMBELI
+Nama: ${name}
+WhatsApp: ${phone}
+
+PRODUK
+Panel Aktivasi Bot Telegram
+
+HARGA
+Rp5.000
+
+PAJAK
+5% = Rp250
+
+TOTAL PEMBAYARAN
+Rp5.250
+
+STATUS
+Saya ingin membeli Panel Aktivasi Bot Telegram.
+
+Mohon informasi proses pembayaran
+dan proses aktivasi panel.
+
+Terima kasih.`;
+
+  openWhatsApp(message);
+}
+
+
+/* SCRIPT BOT */
+
+function openBotCheckout(){
+  document.getElementById("botModal").classList.add("show");
+}
+
+function closeBotCheckout(){
+  document.getElementById("botModal").classList.remove("show");
+}
+
+function sendBotOrder(){
+
+  const name =
+    document.getElementById("botName").value.trim();
+
+  const phone =
+    document.getElementById("botPhone").value.trim();
+
+  if(!name){
+    showToast("Nama belum diisi.");
+    return;
+  }
+
+  if(!phone){
+    showToast("Nomor WhatsApp belum diisi.");
+    return;
+  }
+
+  const message =
+`HALO TAMZZY STORE
+
+SAYA MAU ORDER SCRIPT BOT TELE
+
+DATA PEMBELI
+Nama: ${name}
+WhatsApp: ${phone}
+
+PRODUK
+Script Bot Tele
+
+SCRIPT BY
+dapjimotion
+
+HARGA
+Rp10.000
+
+PAJAK
+5% = Rp500
+
+TOTAL PEMBAYARAN
+Rp10.500
+
+STATUS
+Saya ingin melakukan pembelian Script Bot Tele.
+
+Mohon informasi proses pembayaran
+dan pengirimannya.
+
+Terima kasih.`;
+
+  openWhatsApp(message);
+}
+
+
+/* AKSES PREMIUM BOT */
+
+function openAMBotAccess(){
+  document.getElementById("amBotModal").classList.add("show");
+}
+
+function closeAMBotAccess(){
+  document.getElementById("amBotModal").classList.remove("show");
+}
+
+function sendAMBotOrder(){
+
+  const name =
+    document.getElementById("amBotName").value.trim();
+
+  const phone =
+    document.getElementById("amBotPhone").value.trim();
+
+  if(!name){
+    showToast("Nama belum diisi.");
+    return;
+  }
+
+  if(!phone){
+    showToast("Nomor WhatsApp belum diisi.");
+    return;
+  }
+
+  const message =
+`HALO TAMZZY STORE
+
+SAYA MAU ORDER AKSES PREMIUM BOT TELE
+
+DATA PEMBELI
+Nama: ${name}
+WhatsApp: ${phone}
+
+PRODUK
+Akses Premium Bot Tele
+Alight Motion Premium
+
+HARGA
+Rp3.000
+
+PAJAK
+5% = Rp150
+
+TOTAL PEMBAYARAN
+Rp3.150
+
+MASA AKSES
+PERMANEN
+
+LIMIT
+UNLIMITED
+
+STATUS
+Saya ingin membeli akses Premium
+Bot Tele Alight Motion.
+
+Mohon informasi proses pembayaran
+dan cara mendapatkan akses bot.
+
+Terima kasih.`;
+
+  openWhatsApp(message);
+}
+
+
+/* PANEL INFO */
+
+function openPanelInfo(){
+  document.getElementById("panelInfoModal").classList.add("show");
+}
+
+function closePanelInfo(){
+  document.getElementById("panelInfoModal").classList.remove("show");
+}
+
+
+/* CLOSE OUTSIDE */
+
+[
+  "amModal",
+  "fridayAMModal",
+  "panelModal",
+  "botModal",
+  "amBotModal",
+  "panelInfoModal",
+  "voucherModal"
+].forEach(function(id){
+
+  const modal =
+    document.getElementById(id);
+
+  if(!modal) return;
+
+  modal.addEventListener("click",function(e){
+
+    if(e.target === modal){
+      modal.classList.remove("show");
+    }
+
+  });
+
+});
+
+
+/* ESC */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key === "Escape"){
+
+    closeMenu();
+
+    document
+      .querySelectorAll(".modal")
+      .forEach(function(modal){
+        modal.classList.remove("show");
+      });
+
+  }
+
+});
+
+
+/* =====================================================
+   ANIMASI JAVASCRIPT
+   ===================================================== */
+
+
+/* CURSOR GLOW */
+
+const cursorGlow =
+  document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove",function(e){
+
+  if(!cursorGlow) return;
+
+  cursorGlow.style.left =
+    e.clientX + "px";
+
+  cursorGlow.style.top =
+    e.clientY + "px";
+
+});
+
+
+/* REVEAL CARD SAAT SCROLL */
+
+const revealCards =
+  document.querySelectorAll(".reveal");
+
+if("IntersectionObserver" in window){
+
+  const revealObserver =
+    new IntersectionObserver(function(entries){
+
+      entries.forEach(function(entry){
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("visible");
+
+          revealObserver.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },{
+      threshold:.12
+    });
+
+  revealCards.forEach(function(card,index){
+
+    card.style.transitionDelay =
+      (index * 70) + "ms";
+
+    revealObserver.observe(card);
+
+  });
+
+}else{
+
+  revealCards.forEach(function(card){
+    card.classList.add("visible");
+  });
+
+}
+
+
+/* TILT CARD */
+
+const cards =
+  document.querySelectorAll(".product-card");
+
+cards.forEach(function(card){
+
+  card.addEventListener("mousemove",function(e){
+
+    if(window.innerWidth < 700) return;
+
+    const rect =
+      card.getBoundingClientRect();
+
+    const x =
+      e.clientX - rect.left;
+
+    const y =
+      e.clientY - rect.top;
+
+    const centerX =
+      rect.width / 2;
+
+    const centerY =
+      rect.height / 2;
+
+    const rotateX =
+      ((y - centerY) / centerY) * -2.5;
+
+    const rotateY =
+      ((x - centerX) / centerX) * 2.5;
+
+    card.style.transform =
+      `translateY(-7px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+  });
+
+  card.addEventListener("mouseleave",function(){
+
+    card.style.transform = "";
+
+  });
+
+});
+
+
+/* RIPPLE SEMUA BUTTON */
+
+document.addEventListener("click",function(e){
+
+  const button =
+    e.target.closest("button");
+
+  if(!button) return;
+
+  if(button.disabled) return;
+
+  const rect =
+    button.getBoundingClientRect();
+
+  const ripple =
+    document.createElement("span");
+
+  ripple.className = "ripple";
+
+  const size =
+    Math.max(rect.width,rect.height);
+
+  ripple.style.width =
+    size + "px";
+
+  ripple.style.height =
+    size + "px";
+
+  ripple.style.left =
+    (e.clientX - rect.left - size / 2) + "px";
+
+  ripple.style.top =
+    (e.clientY - rect.top - size / 2) + "px";
+
+  button.appendChild(ripple);
+
+  setTimeout(function(){
+    ripple.remove();
+  },700);
+
+});
+
+
+/* PARALLAX PARTICLES */
+
+let lastMouseX = 0;
+let lastMouseY = 0;
+
+document.addEventListener("mousemove",function(e){
+
+  lastMouseX =
+    (e.clientX / window.innerWidth - .5);
+
+  lastMouseY =
+    (e.clientY / window.innerHeight - .5);
+
+  document
+    .querySelectorAll(".particle")
+    .forEach(function(particle,index){
+
+      const strength =
+        ((index % 4) + 1) * 1.2;
+
+      particle.style.marginLeft =
+        (lastMouseX * strength) + "px";
+
+      particle.style.marginTop =
+        (lastMouseY * strength) + "px";
+
+    });
+
+});
+
+
+/* MODAL BODY LOCK */
+
+const modalObserver =
+  new MutationObserver(function(){
+
+    const activeModal =
+      document.querySelector(".modal.show");
+
+    document.body.style.overflow =
+      activeModal ? "hidden" : "";
+
+  });
+
+document
+  .querySelectorAll(".modal")
+  .forEach(function(modal){
+
+    modalObserver.observe(modal,{
+      attributes:true,
+      attributeFilter:["class"]
+    });
+
+  });
+
+
+/* AUTO FOCUS INPUT PERTAMA */
+
+document
+  .querySelectorAll(".modal")
+  .forEach(function(modal){
+
+    modal.addEventListener("transitionend",function(){
+
+      if(!modal.classList.contains("show")) return;
+
+      const input =
+        modal.querySelector(
+          "input:not([type=file])"
+        );
+
+      if(input){
+
+        setTimeout(function(){
+          input.focus();
+        },100);
+
+      }
+
+    });
+
+  });
+
+
+/* STATUS ONLINE EFFECT */
+
+setInterval(function(){
+
+  const online =
+    document.querySelector(".online");
+
+  if(!online) return;
+
+  online.style.opacity = ".45";
+
+  setTimeout(function(){
+    online.style.opacity = "1";
+  },400);
+
+},5000);
+
+
+/* UPDATE HARGA */
+
+updateAMPrice();
+
+</script>
+
+</body>
+  </html>
